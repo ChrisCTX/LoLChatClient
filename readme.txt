@@ -1,0 +1,1 @@
+Client page to connect with PvP.net

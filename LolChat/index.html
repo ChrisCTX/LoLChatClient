@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PvP.net Webchat</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>PvP.net Webchat</h1>
+        </div>
+        <div id="content">
+            <div id="login">
+                <form id="login_form">
+                    <p>Username: <input type="text" /></p>
+                    <p>Password: <input type="password" /></p>
+                    <p><button id="login_button">Log In</button></p>
+                </form>
+            </div>
+
+            <div id="panel">
+                <div id="tabs">
+                    <ul id="contacts">
+                        <li><a href="#tab-1"><span>esumike</span></a></li>
+                        <li><a href="#tab-2"><span>athanz</span></a></li>
+                        <li><a href="#tab-3"><span>mkbreeg</span></a></li>
+                    </ul>
+
+                    <div id="tab-1">
+                        <ul>Dude, esto es como si te estubiera hablando Kappa</ul>
+                    </div>
+                    <div id="tab-2">
+                        <ul>Mordekaiser</ul>
+                    </div>
+                    <div id="tab-3">
+                        <ul>Mamepato.</ul>
+                    </div>
+
+                </div>
+                <form>
+                    <p>
+                        <textarea rows="5" cols="10" id="text"></textarea>
+                        <button id="send_button">Send</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="./scripts/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="./scripts/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="./scripts/tabs.js"></script>
+<script type="text/javascript" src="./scripts/login.js"></script>
+<script type="text/javascript" src="./scripts/emoticons.js"></script>
+<script>
+    tabbify();
+    postLoginFades();
+</script>
+
+
+<link rel="stylesheet" href="./css/ui-lightness/jquery-ui-1.10.3.custom.css">
+<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+
+
+</html>
