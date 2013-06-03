@@ -10,8 +10,8 @@ var myChats;
 function chatEvents()
 {
     // We register and map functions to events
-    //websocket.on("MessageFromServer", receiveMessage);
-    //websocket.on("LoginResponse", handleResponse);
+    websocket.on("MessageFromServer", receiveMessage);
+    websocket.on("LoginResponse", handleResponse);
     $("#send_form").on("submit", sendMessage);
     $("#login_form").on("submit", logIn);
 }
@@ -32,14 +32,17 @@ function sendMessage()
 
     // We send the message to the server
     websocket.emit("MessageFromClient", message);
-    return false;
+
+    clearChatBox();
+
+    return false; // We return false so the button doesn't reload the entire page.
 }
 
 function receiveMessage(messages)
 {
     // This function handles incoming messages
 
-    // The server actually sends us the entire conversation for our contacts
+    // The server actually sends us the entire conversations for our contacts
     myChats = messages;
 
     // So we just have to handle 're-painting' them, but that's the UI manager's job.
@@ -49,6 +52,7 @@ function receiveMessage(messages)
 function logIn()
 {
     // This function requests the server to be logged in.
+    // Note that val() provides built-in sanitation.
     var login_request = {username: $("#username").val(), password: $("#password").val()};
     websocket.emit("LogIn", login_request);
     clearLogin();
@@ -65,9 +69,14 @@ function handleResponse(response)
         // We set it for the rest of the script to see.
         myUsername = response.user_name;
         panelFading();
-    }
 
-    // We get the user's contacts from the server
-    tabsContacts = response.contacts;
+        // We get the user's contacts from the server
+        tabsContacts = response.contacts;
+
+        // And the conversations
+        myChats = response.chats;
+    }
+    // If login failed we simply ignore it
+
 
 }
