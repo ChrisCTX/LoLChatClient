@@ -1,3 +1,0 @@
-function tabbify(){
-    $( "#tabs" ).tabs();
-}

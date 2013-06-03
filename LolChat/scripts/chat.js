@@ -1,4 +1,4 @@
-//var websocket = io.connect("http://localhost:6969");
+var websocket = io.connect("http://localhost:6969");
 
 $(document).on("ready", chatEvents);
 
@@ -75,6 +75,9 @@ function handleResponse(response)
 
         // And the conversations
         myChats = response.chats;
+
+        // Call the UI Manager to add all the good stuff.
+        drawChat();
     }
     // If login failed we simply ignore it
 

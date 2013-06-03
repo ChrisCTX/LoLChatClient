@@ -58,15 +58,25 @@ function makeContacts(){
 }
 
 function addChats(){
+    for (var name in myChats)
+    {
+        var index = tabsContacts.indexOf(name);
+        var id = "tab-" + index.toString();
 
+        for (var string in myChats[name])
+        {
+            $(id).append('<ul>' + string + '</ul>');
+        }
+    }
 }
 
 function drawChat(){
-    // This function refreshes all the conversation and tabs
+    // This function refreshes all the conversation and tabs.
 
-    // We dynamically generate the content based on contacts and chats
+    // We dynamically generate the content based on contacts and chats.
     makeContacts();
-
+    addChats();
+    // Then we make the UI transformations required to make it look nice.
     makeEmoticons();
     makeTabs();
 }
