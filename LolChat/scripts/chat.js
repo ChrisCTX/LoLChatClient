@@ -12,7 +12,7 @@ function chatEvents()
     // We register and map functions to events
     websocket.on("MessageFromServer", receiveMessage);
     websocket.on("LoginResponse", handleResponse);
-    $("#send_form").on("submit", sendMessage);
+    $("#chat_form").on("submit", sendMessage);
     $("#login_form").on("submit", logIn);
 }
 
@@ -77,6 +77,8 @@ function handleResponse(response)
         myChats = response.chats;
 
         // Call the UI Manager to add all the good stuff.
+
+        makeContacts();
         drawChat();
     }
     // If login failed we simply ignore it

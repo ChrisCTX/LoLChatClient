@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>PvP.net Webchat</title>
-
+<script type="text/javascript" src="http://localhost:6969/socket.io/socket.io.js"></script>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                     <ul id="contacts">
                     </ul>
                 </div>
-                <form>
+                <form id="chat_form">
                     <p>
                         <textarea rows="5" cols="10" id="text"></textarea>
                         <input type="submit" id="send_button" value="Send">

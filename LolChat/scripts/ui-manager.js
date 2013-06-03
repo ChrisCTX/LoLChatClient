@@ -39,14 +39,14 @@ function makeContacts(){
     // Loops over the contact global object
     for (var contact in tabsContacts)
     {
-        $("#contacts").append('<li><a> + contact + </a></li>');
+        $("#contacts").append('<li><a>' + tabsContacts[contact] + '</a></li>');
         $("#tabs").append('<div></div>');
     }
 
     // We loop over each element type and add the increasing attributes.
     var count = 0;
     $("#contacts > li > a").each(function() {
-       $(this).attr("href", "tab-"+count);
+       $(this).attr("href", "#tab-"+count);
         count++
     });
 
@@ -57,15 +57,20 @@ function makeContacts(){
     });
 }
 
+function clearChatLog(){
+    $(".log").remove();
+}
+
+
 function addChats(){
     for (var name in myChats)
     {
         var index = tabsContacts.indexOf(name);
-        var id = "tab-" + index.toString();
+        var id = "#tab-" + index.toString();
 
         for (var string in myChats[name])
         {
-            $(id).append('<ul>' + string + '</ul>');
+            $(id).append('<ul class="log">' + myChats[name][string] + '</ul>');
         }
     }
 }
@@ -74,7 +79,7 @@ function drawChat(){
     // This function refreshes all the conversation and tabs.
 
     // We dynamically generate the content based on contacts and chats.
-    makeContacts();
+    clearChatLog();
     addChats();
     // Then we make the UI transformations required to make it look nice.
     makeEmoticons();
